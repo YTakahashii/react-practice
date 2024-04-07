@@ -18,7 +18,7 @@ export default tseslint.config(
   },
   {
     ignores: [
-      './.next/*',
+      '.next/*',
       './node_modules/*',
       './dist/*',
       'src/@types/*',
@@ -36,6 +36,7 @@ export default tseslint.config(
   {
     rules: {
       '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+      '@typescript-eslint/no-unnecessary-condition': 'off',
     },
   },
   eslintConfigPrettier,
