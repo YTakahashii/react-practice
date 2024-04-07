@@ -5,8 +5,13 @@
 
 ## 推奨ツール
 
+### node.js
+
+任意のバージョンマネージャを選択してください。本リポジトリで推奨しているのは以下の 3 つです。
+
 - [mise](https://mise.jdx.dev/)
-  - 開発ツールのバージョンを固定するのに使っています
+- [nodenv](https://github.com/nodenv/nodenv)
+- [asdf](https://asdf-vm.com/)
 
 ## 学習の進め方
 
