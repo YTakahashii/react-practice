@@ -2,16 +2,15 @@ import { Checkbox, HStack, List, ListItem, Text } from '@chakra-ui/react';
 import { Todo } from '../Todo.type';
 import { TodoFilterStatus } from '../TodoListFilter/TodoListFilter.type';
 import { useMemo } from 'react';
-import { useTodoList } from './useTodoList';
+import type { UseTodoListReturn } from './useTodoList';
 
-type TodoListProps = {
+type TodoListProps = Pick<UseTodoListReturn, 'toggleTodo'> & {
   status: TodoFilterStatus;
   query: string;
-  defaultTodoList: Todo[];
+  todoList: Todo[];
 };
 
-export function TodoList({ defaultTodoList, query, status }: TodoListProps) {
-  const { todoList, toggleTodo } = useTodoList({ defaultTodoList });
+export function TodoList({ todoList, query, status, toggleTodo }: TodoListProps) {
   const filteredTodoList = useMemo(() => {
     return todoList.filter((todo) => {
       const isMatchQuery = todo.title.includes(query);

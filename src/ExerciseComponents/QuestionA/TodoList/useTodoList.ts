@@ -27,8 +27,20 @@ export function useTodoList({ defaultTodoList }: UseTodoListProps) {
     });
   }, []);
 
+  const createTodo = useCallback(({ title }: { title: string }) => {
+    dispatch({
+      type: 'create',
+      payload: {
+        title,
+      },
+    });
+  }, []);
+
   return {
     todoList,
     toggleTodo,
+    createTodo,
   };
 }
+
+export type UseTodoListReturn = ReturnType<typeof useTodoList>;

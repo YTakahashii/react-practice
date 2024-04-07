@@ -1,3 +1,4 @@
+import { createTodoFixture } from '../Todo.fixture';
 import { Todo } from '../Todo.type';
 
 type TodoListState = {
@@ -15,6 +16,12 @@ type TodoListAction =
       type: 'toggle';
       payload: {
         id: number;
+      };
+    }
+  | {
+      type: 'create';
+      payload: {
+        title: string;
       };
     };
 
@@ -39,6 +46,10 @@ export const reducer = (state: TodoListState, action: TodoListAction): TodoListS
           }
           return todo;
         }),
+      };
+    case 'create':
+      return {
+        todoList: [...state.todoList, createTodoFixture({ title: action.payload.title })],
       };
     default:
       return state;
