@@ -10,7 +10,7 @@ export function QuestionA() {
   return (
     <Box as="main" p={4}>
       <TodoListFilter {...todoListFilter} />
-      <TodoList todoList={defaultTodoList} query={todoListFilter.query} status={todoListFilter.status} />
+      <TodoList defaultTodoList={defaultTodoList} query={todoListFilter.query} status={todoListFilter.status} />
     </Box>
   );
 }
