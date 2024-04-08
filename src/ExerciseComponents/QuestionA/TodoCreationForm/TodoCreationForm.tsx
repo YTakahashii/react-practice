@@ -1,5 +1,5 @@
-import { Box, Button, Input } from '@chakra-ui/react';
-import { useRef } from 'react';
+import { Button, FormControl, FormErrorMessage, HStack, Input } from '@chakra-ui/react';
+import { useRef, useState } from 'react';
 
 type TodoCreationFormProps = {
   onCreateTodo: (title: string) => void;
@@ -7,24 +7,34 @@ type TodoCreationFormProps = {
 
 export function TodoCreationForm({ onCreateTodo }: TodoCreationFormProps) {
   const titleRef = useRef<HTMLInputElement>(null);
+  const [titleError, setTitleError] = useState<string | undefined>(undefined);
 
   return (
-    <Box
-      as="form"
+    <form
       onSubmit={(e) => {
         e.preventDefault();
-        if (titleRef.current) {
+        if (titleRef.current === null) {
+          return;
+        }
+        if (titleRef.current.value.trim().length > 0) {
           onCreateTodo(titleRef.current.value);
           titleRef.current.value = '';
+          setTitleError(undefined);
+        } else {
+          setTitleError('タスク名を入力してください');
+          titleRef.current.focus();
         }
       }}
-      display="flex"
-      gap={2}
     >
-      <Input ref={titleRef} size="sm" placeholder="Learn React" />
-      <Button type="submit" size="sm">
-        追加
-      </Button>
-    </Box>
+      <HStack gap={2} align="start">
+        <FormControl isInvalid={!!titleError}>
+          <Input ref={titleRef} size="sm" placeholder="Learn React" />
+          <FormErrorMessage>{titleError}</FormErrorMessage>
+        </FormControl>
+        <Button type="submit" size="sm">
+          追加
+        </Button>
+      </HStack>
+    </form>
   );
 }
