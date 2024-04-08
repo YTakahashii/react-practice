@@ -1,4 +1,4 @@
-import { Checkbox, HStack, List, ListItem, Text } from '@chakra-ui/react';
+import { Checkbox, HStack, List, ListItem } from '@chakra-ui/react';
 import { Todo } from '../Todo.type';
 import { TodoFilterStatus } from '../TodoListFilter/TodoListFilter.type';
 import { useMemo } from 'react';
@@ -41,8 +41,9 @@ export function TodoList({ todoList, query, status, toggleTodo }: TodoListProps)
                       id: todo.id,
                     });
                   }}
-                />
-                <Text>{todo.title}</Text>
+                >
+                  {todo.title}
+                </Checkbox>
               </HStack>
             </ListItem>
           );

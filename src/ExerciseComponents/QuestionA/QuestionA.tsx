@@ -11,8 +11,8 @@ export function QuestionA() {
   const { todoList, toggleTodo, createTodo } = useTodoList({ defaultTodoList });
 
   return (
-    <Box as="main" p={4}>
-      <VStack gap={4}>
+    <Box as="main" p={4} maxWidth={300} mx="auto">
+      <VStack gap={4} align="start">
         <TodoListFilter {...todoListFilter} />
         <TodoCreationForm
           onCreateTodo={(title) => {
