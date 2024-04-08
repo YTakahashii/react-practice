@@ -8,7 +8,7 @@ import { useTodoList } from './TodoList/useTodoList';
 
 export function QuestionA() {
   const todoListFilter = useTodoListFilter();
-  const { todoList, toggleTodo, createTodo } = useTodoList({ defaultTodoList });
+  const { todoList, toggleTodo, createTodo, deleteTodo } = useTodoList({ defaultTodoList });
 
   return (
     <Box as="main" p={4} maxWidth={300} mx="auto">
@@ -24,6 +24,7 @@ export function QuestionA() {
           query={todoListFilter.query}
           status={todoListFilter.status}
           toggleTodo={toggleTodo}
+          deleteTodo={deleteTodo}
         />
       </VStack>
     </Box>

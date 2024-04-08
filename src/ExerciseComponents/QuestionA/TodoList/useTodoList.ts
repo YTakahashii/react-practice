@@ -36,10 +36,20 @@ export function useTodoList({ defaultTodoList }: UseTodoListProps) {
     });
   }, []);
 
+  const deleteTodo = useCallback(({ id }: { id: number }) => {
+    dispatch({
+      type: 'delete',
+      payload: {
+        id,
+      },
+    });
+  }, []);
+
   return {
     todoList,
     toggleTodo,
     createTodo,
+    deleteTodo,
   };
 }
 

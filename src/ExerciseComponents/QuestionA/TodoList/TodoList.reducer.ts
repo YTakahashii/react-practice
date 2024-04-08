@@ -23,6 +23,12 @@ type TodoListAction =
       payload: {
         title: string;
       };
+    }
+  | {
+      type: 'delete';
+      payload: {
+        id: number;
+      };
     };
 
 export const initialState: TodoListState = {
@@ -50,6 +56,10 @@ export const reducer = (state: TodoListState, action: TodoListAction): TodoListS
     case 'create':
       return {
         todoList: [...state.todoList, createTodoFixture({ title: action.payload.title })],
+      };
+    case 'delete':
+      return {
+        todoList: state.todoList.filter((todo) => todo.id !== action.payload.id),
       };
     default:
       return state;
