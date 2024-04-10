@@ -6,7 +6,7 @@ import { defaultTodoList } from './Todo.fixture';
 import { TodoCreationForm } from './TodoCreationForm/TodoCreationForm';
 import { useTodoList } from './TodoList/useTodoList';
 
-export function QuestionA() {
+export function TodoApp() {
   const todoListFilter = useTodoListFilter();
   const { todoList, toggleTodo, createTodo, deleteTodo } = useTodoList({ defaultTodoList });
 
