@@ -13,7 +13,7 @@ type TodoListProps = Pick<UseTodoListReturn, 'toggleTodo' | 'deleteTodo'> & {
 export function TodoList({ todoList, query, status, toggleTodo, deleteTodo }: TodoListProps) {
   const filteredTodoList = useMemo(() => {
     return todoList.filter((todo) => {
-      const isMatchQuery = todo.title.includes(query);
+      const isMatchQuery = todo.title.toLocaleLowerCase().includes(query.toLocaleLowerCase());
       switch (status) {
         case 'all':
           return isMatchQuery;
